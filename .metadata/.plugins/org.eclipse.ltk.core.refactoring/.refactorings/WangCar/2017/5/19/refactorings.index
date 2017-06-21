@@ -1,0 +1,6 @@
+1494328363184	Convert local variable 'queue' to field
+1494407252267	Copy file
+1494471644505	Rename resource 'power_off .png'
+1494563719978	Convert local variable 'startMarker' to field
+1494563770426	Convert local variable 'endMarker' to field
+1494583180891	Convert local variable 'geocoderSearch' to field

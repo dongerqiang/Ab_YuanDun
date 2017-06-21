@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#7a000000" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/shape_rect_write_bg"
+        android:layout_marginBottom="16dp"
+       android:paddingBottom="12dp"
+        android:orientation="vertical" >
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/cancelBtn"
+                android:layout_width="60dp"
+                android:layout_height="28dp"
+                android:layout_gravity="left"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/button_circular_bg"
+                android:text="取消"
+                android:textColor="#333333"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/confirmBtn"
+                android:layout_width="60dp"
+                android:layout_height="28dp"
+                android:layout_gravity="right"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/button_circular_bg"
+                android:text="确定"
+                android:textColor="#333333"
+                android:textSize="14sp" />
+        </FrameLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.6dp"
+            android:layout_marginTop="16dp"
+            android:background="#cccccc" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <com.wang.android.mode.view.wheel.WheelView
+                android:id="@+id/wheelView"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:cacheColorHint="#00000000"
+                android:divider="@null"
+                android:scrollbars="none" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/datepickerview" />
+        </FrameLayout>
+    </LinearLayout>
+
+</RelativeLayout>

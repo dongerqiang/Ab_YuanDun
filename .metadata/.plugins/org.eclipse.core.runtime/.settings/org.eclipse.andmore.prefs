@@ -1,0 +1,6 @@
+design.structure.flyout.width=241
+eclipse.preferences.version=1
+org.eclipse.andmore.autoPickTarget=false
+org.eclipse.andmore.fixLegacyEditors=1
+org.eclipse.andmore.sdk=D\:\\adt-bundle-windows-x86_64-20140702\\adt-bundle-windows-x86_64-20140702\\sdk
+org.eclipse.andmore.xmlEditor=true

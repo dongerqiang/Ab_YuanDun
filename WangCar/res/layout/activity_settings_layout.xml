@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/icon_window_bg" >
+
+    <include
+        android:id="@+id/titleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/title_bar_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titleLayout"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingEnd="12dp"
+            android:paddingStart="12dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="车辆上锁"
+                android:textColor="#a3a4ac"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/lockCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/select_check_switch_bg" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="#22252c" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingEnd="12dp"
+            android:paddingStart="12dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="车辆解锁"
+                android:textColor="#a3a4ac"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/unlockCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/select_check_switch_bg" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="#22252c" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingEnd="12dp"
+            android:paddingStart="12dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="寻车报警"
+                android:textColor="#a3a4ac"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/findCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/select_check_switch_bg" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="#22252c" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingEnd="12dp"
+            android:paddingStart="12dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="鞍座开启"
+                android:textColor="#a3a4ac"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/anzhuoCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/select_check_switch_bg" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="#22252c" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingEnd="12dp"
+            android:paddingStart="12dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="自动设防"
+                android:textColor="#a3a4ac"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/autolockCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/select_check_switch_bg" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="#22252c" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingEnd="12dp"
+            android:paddingStart="12dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="静音布防"
+                android:textColor="#a3a4ac"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/mutelockCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/select_check_switch_bg" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="#22252c" />
+
+        <LinearLayout
+            android:id="@+id/ljLayout"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingEnd="12dp"
+            android:paddingStart="12dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="轮径"
+                android:textColor="#a3a4ac"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/ljTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="23"
+                    android:textColor="#a3a4ac"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_select_down" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="#22252c" />
+
+        <LinearLayout
+            android:id="@+id/jdsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingEnd="12dp"
+            android:paddingStart="12dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="极对数"
+                android:textColor="#a3a4ac"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/jdsTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="23"
+                    android:textColor="#a3a4ac"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_select_down" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="#22252c" />
+
+        <LinearLayout
+            android:id="@+id/volLayout"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingEnd="12dp"
+            android:paddingStart="12dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="电压"
+                android:textColor="#a3a4ac"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/volTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="72V"
+                    android:textColor="#a3a4ac"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_select_down" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="#22252c" />
+            
+        <LinearLayout
+            android:id="@+id/speedLayout"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingEnd="12dp"
+            android:paddingStart="12dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="档位"
+                android:textColor="#a3a4ac"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/dangTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="低"
+                    android:textColor="#a3a4ac"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_select_down" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="#22252c" />
+    </LinearLayout>
+
+</RelativeLayout>

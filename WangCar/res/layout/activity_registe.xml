@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:background="@drawable/icon_window_bg"
+    android:orientation="vertical">
+	<include
+        android:id="@+id/titleLayout"
+        layout="@layout/title_bar_layout" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:text="Welcome"
+                android:textColor="@color/white"
+                android:layout_gravity="center_horizontal"
+                android:textSize="25sp" />
+
+
+                <AutoCompleteTextView
+                    android:id="@+id/edt_register_phoneNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:hint="手机号"
+                    android:imeOptions="actionNext"
+                    android:layout_marginStart="10dp"
+                    android:drawablePadding="10dp"
+                    android:inputType="phone"
+                    android:drawableLeft="@drawable/login_phone"
+                    android:background="#a2abb2"
+                    android:maxLines="1"
+                    android:layout_marginLeft="40dp"
+               		android:layout_marginRight="40dp"
+                	android:layout_marginTop="50dp"
+                	android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="14sp"
+                    android:paddingLeft="5dp" 
+                    android:lines="1" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                >
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/edt_register_code"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:hint="请输入验证码"
+                            android:inputType="number"
+                            android:drawablePadding="10dp"
+                            android:drawableStart="@drawable/yanzh"
+                            android:maxLength="6"
+                            android:background="#a2abb2"
+                            android:imeOptions="actionNext"
+                            android:textColor="@color/white"
+                            android:textColorHint="@color/white"
+                            android:textSize="14sp" 
+                            android:paddingStart="5dp" 
+                        	android:gravity="center_vertical"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_register_getCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:background="@drawable/yanzhma"
+                    android:gravity="center"
+                    android:text="获取验证码"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+                <AutoCompleteTextView
+                    android:id="@+id/edt_register_pwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:hint="请输入密码（6位字母）"
+                    android:inputType="textPassword"
+                    android:drawableStart="@drawable/icon_auth_code"
+                    android:drawablePadding="10dp"
+                    android:maxLength="8"
+                    android:background="#a2abb2"
+                    android:imeActionId="@+id/register"
+                    android:imeOptions="actionDone"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:layout_marginLeft="40dp"
+                	android:layout_marginRight="40dp"
+                	android:layout_marginTop="20dp"
+                	android:gravity="center_vertical"
+                	android:paddingLeft="5dp" 
+                    android:textSize="14sp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/iv_register_agree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:src="@drawable/check" />
+
+
+                <TextView
+                    android:id="@+id/tv_register_userAgreement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:gravity="center"
+                    android:text="我已阅读并同意服务协议"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/tv_register_submit"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="60dp"
+                android:gravity="center"
+                android:text="提交"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:background="@drawable/button_write_bg" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

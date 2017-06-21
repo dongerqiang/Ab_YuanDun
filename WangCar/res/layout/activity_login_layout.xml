@@ -1,0 +1,125 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:background="@drawable/icon_window_bg">
+
+    <include
+        android:id="@+id/titleLayout"
+        layout="@layout/title_bar_layout" />
+    <ScrollView
+        android:id="@+id/login_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/email_login_form"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="50dp"
+                android:src="@drawable/ic_launcher" />
+
+
+            
+
+                <AutoCompleteTextView
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="手机号码"
+                    android:imeOptions="actionNext"
+                    android:inputType="phone"
+                    android:drawableLeft="@drawable/login_phone"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:drawablePadding="8dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="14sp" 
+                    android:maxLines="1"
+                    android:lines="1"
+                    android:background="#a2abb2"
+                    android:layout_marginTop="50dp"
+                    android:maxLength="11"/>
+
+
+
+                <AutoCompleteTextView
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="密码"
+                    android:imeActionId="@+id/login"
+                    android:drawableLeft="@drawable/icon_auth_code"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:drawablePadding="8dp"
+                    android:imeActionLabel="登录"
+                    android:inputType="textPassword"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="14sp" 
+                    android:maxLines="1"
+                    android:lines="1"
+                    android:layout_marginTop="10dp"
+                    android:background="#a2abb2"
+                    android:maxLength="6"/>
+
+
+            <Button
+                android:id="@+id/email_sign_in_button"
+                style="?android:textAppearanceSmall"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="60dp"
+                android:text="登录"
+                android:textColor="@color/white"
+                android:background="@drawable/button_write_bg"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="还没有账号  , "
+                    android:textSize="14sp"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="立即注册"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+
