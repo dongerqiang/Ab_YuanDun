@@ -77,27 +77,75 @@ public final class CloudSmartControlActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        unlockLL = ((LinearLayout) hasViews.findViewById(id.unlockLL));
-        findBikeLL = ((LinearLayout) hasViews.findViewById(id.findBikeLL));
-        startTV = ((TextView) hasViews.findViewById(id.startTV));
-        startLL = ((LinearLayout) hasViews.findViewById(id.startLL));
         findTV = ((TextView) hasViews.findViewById(id.findTV));
-        lockTV = ((TextView) hasViews.findViewById(id.lockTV));
-        unlockTV = ((TextView) hasViews.findViewById(id.unlockTV));
-        controlBtn = ((Button) hasViews.findViewById(id.controlBtn));
-        startImageView = ((ImageView) hasViews.findViewById(id.startImageView));
-        mMapView = ((MapView) hasViews.findViewById(id.mMapView));
         controlLayout = ((LinearLayout) hasViews.findViewById(id.controlLayout));
+        startLL = ((LinearLayout) hasViews.findViewById(id.startLL));
+        startTV = ((TextView) hasViews.findViewById(id.startTV));
+        unlockLL = ((LinearLayout) hasViews.findViewById(id.unlockLL));
+        mMapView = ((MapView) hasViews.findViewById(id.mMapView));
+        startImageView = ((ImageView) hasViews.findViewById(id.startImageView));
         lockLL = ((LinearLayout) hasViews.findViewById(id.lockLL));
+        lockTV = ((TextView) hasViews.findViewById(id.lockTV));
+        findBikeLL = ((LinearLayout) hasViews.findViewById(id.findBikeLL));
+        controlBtn = ((Button) hasViews.findViewById(id.controlBtn));
+        unlockTV = ((TextView) hasViews.findViewById(id.unlockTV));
+        if (findBikeLL!= null) {
+            findBikeLL.setOnClickListener(new OnClickListener() {
+
+
+                @Override
+                public void onClick(View view) {
+                    CloudSmartControlActivity_.this.findBikeLL();
+                }
+
+            }
+            );
+        }
+        if (unlockLL!= null) {
+            unlockLL.setOnClickListener(new OnClickListener() {
+
+
+                @Override
+                public void onClick(View view) {
+                    CloudSmartControlActivity_.this.unlockLL();
+                }
+
+            }
+            );
+        }
+        if (controlBtn!= null) {
+            controlBtn.setOnClickListener(new OnClickListener() {
+
+
+                @Override
+                public void onClick(View view) {
+                    CloudSmartControlActivity_.this.controlBtn();
+                }
+
+            }
+            );
+        }
+        if (startLL!= null) {
+            startLL.setOnClickListener(new OnClickListener() {
+
+
+                @Override
+                public void onClick(View view) {
+                    CloudSmartControlActivity_.this.startLL();
+                }
+
+            }
+            );
+        }
         {
-            View view = hasViews.findViewById(id.errorCheckIv);
+            View view = hasViews.findViewById(id.phoneIv);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        CloudSmartControlActivity_.this.errorCheckIv();
+                        CloudSmartControlActivity_.this.phoneIv();
                     }
 
                 }
@@ -119,69 +167,6 @@ public final class CloudSmartControlActivity_
                 );
             }
         }
-        if (unlockLL!= null) {
-            unlockLL.setOnClickListener(new OnClickListener() {
-
-
-                @Override
-                public void onClick(View view) {
-                    CloudSmartControlActivity_.this.unlockLL();
-                }
-
-            }
-            );
-        }
-        if (startLL!= null) {
-            startLL.setOnClickListener(new OnClickListener() {
-
-
-                @Override
-                public void onClick(View view) {
-                    CloudSmartControlActivity_.this.startLL();
-                }
-
-            }
-            );
-        }
-        if (controlBtn!= null) {
-            controlBtn.setOnClickListener(new OnClickListener() {
-
-
-                @Override
-                public void onClick(View view) {
-                    CloudSmartControlActivity_.this.controlBtn();
-                }
-
-            }
-            );
-        }
-        {
-            View view = hasViews.findViewById(id.phoneIv);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        CloudSmartControlActivity_.this.phoneIv();
-                    }
-
-                }
-                );
-            }
-        }
-        if (findBikeLL!= null) {
-            findBikeLL.setOnClickListener(new OnClickListener() {
-
-
-                @Override
-                public void onClick(View view) {
-                    CloudSmartControlActivity_.this.findBikeLL();
-                }
-
-            }
-            );
-        }
         if (lockLL!= null) {
             lockLL.setOnClickListener(new OnClickListener() {
 
@@ -193,6 +178,21 @@ public final class CloudSmartControlActivity_
 
             }
             );
+        }
+        {
+            View view = hasViews.findViewById(id.errorCheckIv);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        CloudSmartControlActivity_.this.errorCheckIv();
+                    }
+
+                }
+                );
+            }
         }
         {
             View view = hasViews.findViewById(id.trackIv);

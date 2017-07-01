@@ -302,7 +302,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
-                    android:text="km"
+                    android:text="m"
                     android:textColor="#90aacf"
                     android:textSize="16sp" />
             </TableRow>

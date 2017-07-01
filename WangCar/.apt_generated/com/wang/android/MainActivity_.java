@@ -89,39 +89,9 @@ public final class MainActivity_
     @Override
     public void onViewChanged(HasViews hasViews) {
         bottomLayoutTemp = hasViews.findViewById(id.bottomLayoutTemp);
-        logImg = ((ImageView) hasViews.findViewById(id.logImg));
         titleLayoutTemp = hasViews.findViewById(id.titleLayoutTemp);
+        logImg = ((ImageView) hasViews.findViewById(id.logImg));
         bottomLayout = ((LinearLayout) hasViews.findViewById(id.bottomLayout));
-        {
-            View view = hasViews.findViewById(id.moreImg);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        MainActivity_.this.moreImg();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(id.serverImg);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        MainActivity_.this.serverImg();
-                    }
-
-                }
-                );
-            }
-        }
         {
             View view = hasViews.findViewById(id.yibiaoImg);
             if (view!= null) {
@@ -138,6 +108,21 @@ public final class MainActivity_
             }
         }
         {
+            View view = hasViews.findViewById(id.moreImg);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        MainActivity_.this.moreImg();
+                    }
+
+                }
+                );
+            }
+        }
+        {
             View view = hasViews.findViewById(id.remoteImg);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
@@ -146,6 +131,21 @@ public final class MainActivity_
                     @Override
                     public void onClick(View view) {
                         MainActivity_.this.remoteImg();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.serverImg);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        MainActivity_.this.serverImg();
                     }
 
                 }

@@ -73,8 +73,48 @@ public final class KeyRemoteFragment_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
+        connect_flag = ((ImageView) hasViews.findViewById(com.wang.android.R.id.connect_flag));
         stopImg = ((ImageView) hasViews.findViewById(com.wang.android.R.id.stopImg));
         loakImg = ((ImageView) hasViews.findViewById(com.wang.android.R.id.loakImg));
+        if (loakImg!= null) {
+            loakImg.setOnClickListener(new OnClickListener() {
+
+
+                @Override
+                public void onClick(View view) {
+                    KeyRemoteFragment_.this.loakImg();
+                }
+
+            }
+            );
+        }
+        {
+            View view = hasViews.findViewById(com.wang.android.R.id.locationImg);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        KeyRemoteFragment_.this.locationImg();
+                    }
+
+                }
+                );
+            }
+        }
+        if (stopImg!= null) {
+            stopImg.setOnClickListener(new OnClickListener() {
+
+
+                @Override
+                public void onClick(View view) {
+                    KeyRemoteFragment_.this.stopImg();
+                }
+
+            }
+            );
+        }
         {
             View view = hasViews.findViewById(com.wang.android.R.id.gpsImg);
             if (view!= null) {
@@ -84,21 +124,6 @@ public final class KeyRemoteFragment_
                     @Override
                     public void onClick(View view) {
                         KeyRemoteFragment_.this.gpsImg();
-                    }
-
-                }
-                );
-            }
-        }
-        {
-            View view = hasViews.findViewById(com.wang.android.R.id.checkImg);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        KeyRemoteFragment_.this.checkImg();
                     }
 
                 }
@@ -121,31 +146,19 @@ public final class KeyRemoteFragment_
             }
         }
         {
-            View view = hasViews.findViewById(com.wang.android.R.id.locationImg);
+            View view = hasViews.findViewById(com.wang.android.R.id.checkImg);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        KeyRemoteFragment_.this.locationImg();
+                        KeyRemoteFragment_.this.checkImg();
                     }
 
                 }
                 );
             }
-        }
-        if (loakImg!= null) {
-            loakImg.setOnClickListener(new OnClickListener() {
-
-
-                @Override
-                public void onClick(View view) {
-                    KeyRemoteFragment_.this.loakImg();
-                }
-
-            }
-            );
         }
         {
             View view = hasViews.findViewById(com.wang.android.R.id.blueImg);
@@ -161,18 +174,6 @@ public final class KeyRemoteFragment_
                 }
                 );
             }
-        }
-        if (stopImg!= null) {
-            stopImg.setOnClickListener(new OnClickListener() {
-
-
-                @Override
-                public void onClick(View view) {
-                    KeyRemoteFragment_.this.stopImg();
-                }
-
-            }
-            );
         }
         initViews();
     }

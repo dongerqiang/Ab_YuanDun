@@ -1,0 +1,14 @@
+package com.wang.android.mode.utils;
+
+public class TipInfo {
+	private String title;
+	private String message;
+	public static TipInfo createTipInfo(String title,String message){
+		return new TipInfo(title,message);
+	}
+	
+	private TipInfo(String title,String message){
+		this.title = title;
+		this.message=message;
+	}
+}

@@ -9,6 +9,11 @@ public class BroadcastUtils {
 	public static final String BLE_CONNECT_STATE = "ble_connect_state";
 	public static final int BLE_CONNECTED = 1;
 	public static final int BLE_DISCONNECT = 0;
+	public static final int BLE_ARMED = 2;
+	public static final int BLE_DISARMED = 3;
+	public static final int BLE_STTOPED = 4;
+	public static final int BLE_START = 5;
+	public static final int BLE_ALARM_WARNING = 6;
 	public static final String KEY_BLE_STATE = "ble_state";
 	
 	public static final String MILEAGE_ACTION = "mileage_action";

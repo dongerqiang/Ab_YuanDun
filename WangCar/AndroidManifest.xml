@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wang.android"
-    android:versionCode="2"
-    android:versionName="1.2" >
+    android:versionCode="10"
+    android:versionName="2.1" >
 
     <uses-sdk
-        android:minSdkVersion="18"
-        android:targetSdkVersion="19" />
+        android:maxSdkVersion="19"
+        android:minSdkVersion="18" />
 
     <!-- Required -->
     <permission
@@ -74,8 +74,6 @@
     </uses-permission>
     <uses-permission android:name="android.permission.READ_LOGS" /> <!-- 获取日志 -->
 
-
-    <!-- 声明应用需要使用设备的蓝牙BLE -->
     <uses-feature
         android:name="android.hardware.bluetooth_le"
         android:required="true" />
@@ -136,7 +134,7 @@
 
         <service
             android:name="com.xiaofu_yan.blux.le.server.BluxSsService"
-            android:exported="false"
+            android:exported="true"
             android:label="BluxGuard_Server" >
             <intent-filter>
                 <action android:name="com.xiaofu_yan.blux.le.server.BluxSsService.ACTION" />

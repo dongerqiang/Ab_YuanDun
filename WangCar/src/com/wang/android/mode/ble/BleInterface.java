@@ -10,6 +10,8 @@ import com.wang.android.mode.interfaces.IBlueCallback;
 import com.wang.android.mode.utils.BroadcastUtils;
 import com.wang.android.mode.utils.ParserData;
 import com.xiaofu_yan.blux.blue_guard.BlueGuard;
+import com.xiaofu_yan.blux.blue_guard.BlueGuard.Alarm;
+import com.xiaofu_yan.blux.blue_guard.BlueGuard.State;
 import com.xiaofu_yan.blux.le.server.BluxSsServer;
 import com.xiaofu_yan.blux.smart_bike.SmartBike;
 import com.xiaofu_yan.blux.smart_bike.SmartBikeManager;
@@ -34,7 +36,7 @@ public class BleInterface {
 	public SmartBike mSmartBike;
 	private List<IBlueCallback> blueCallbacks = new ArrayList<IBlueCallback>();
 	private Context mCtx;
-	
+	public MyApplication app = MyApplication.app;
 	private DeviceDB.Record lastDevice;
 	private ParserData parserData = new ParserData();
 	
@@ -59,7 +61,8 @@ public class BleInterface {
 	
 	public void disconverBleDevice(){
 		if(mBlueGuardManager != null){
-			mBlueGuardManager.scanSmartBike();
+			boolean scan = mBlueGuardManager.scanSmartBike();
+			MyApplication.logBug("disconverBleDevice--------- scan");
 		}
 	}
 	
@@ -108,6 +111,7 @@ public class BleInterface {
 		}else{
 			 MyApplication.app.showToast("行驶中，无法使用遥控功能!");
 		}*/
+		if(!isSmartBikeAvailable())return;
 		mSmartBike.openTrunk();
 	}
 	
@@ -205,6 +209,7 @@ public class BleInterface {
 	
 	
 	protected boolean isRunning(){
+		if(!isSmartBikeAvailable()) return false;
 		if((mSmartBike.state() == BlueGuard.State.RUNNING) /*|| (mSmartBike.state() == BlueGuard.State.STARTED)*/){
 			return true;
 		}else{
@@ -227,11 +232,18 @@ public class BleInterface {
 		BluxSsServer.sharedInstance().start(context);
 	}
 	
-	public void binder(Activity activity){
+	public void binder(Context activity){
 		if(mBlueGuardManager == null){
 			boolean b = mConnection.connect(activity);
 			MyApplication.logBug(b ? "mConnection success" :"mConnection fail" );
-		}
+		}/*else{
+			lastDevice=DeviceDB.load(mCtx);
+			if(lastDevice != null){
+				if(!TextUtils.isEmpty(lastDevice.identifier)){
+					mBlueGuardManager.getDevice(lastDevice.identifier);
+				}
+			}
+		}*/
 	}
 	
 	public void addBlueCallback(IBlueCallback blueCallback) {
@@ -306,12 +318,30 @@ public class BleInterface {
 		public void blueGuardConnected(BlueGuard blueGuard) {
             mSmartBike.getAccountManager(); //
             MyApplication.app.broadUtils.sendBleState(BroadcastUtils.BLE_CONNECTED);
-            
+            currentMileage=0;
 		}
 	
 		@Override
 		public void blueGuardDisconnected(BlueGuard blueGuard, BlueGuard.DisconnectReason reason) {
 			 MyApplication.app.broadUtils.sendBleState(BroadcastUtils.BLE_DISCONNECT);
+			 MyApplication.logBug("blueGuardDisconnected == " +reason );
+			 if(reason == BlueGuard.DisconnectReason.ERROR_PERMISSION||reason == BlueGuard.DisconnectReason.ERROR_KEY){
+				 if(lastDevice !=null){
+					 
+					 lastDevice.key = "";
+					 lastDevice.identifier="";
+					 DeviceDB.save(mCtx,lastDevice);
+					 lastDevice = DeviceDB.load(mCtx);					 
+				 }
+			 }else if(reason == BlueGuard.DisconnectReason.LINK_LOST){
+				 
+				 if(lastDevice != null){
+						if(!TextUtils.isEmpty(lastDevice.key)){
+							mSmartBike.setConnectionKey(lastDevice.key);
+							mSmartBike.connect();
+						}
+				}
+			 }
 		}
 
 		@Override
@@ -320,8 +350,31 @@ public class BleInterface {
 		}
 
 		@Override
+		public void blueGuardAlarm(BlueGuard blueGuard, Alarm type) {
+			MyApplication.logBug("blueGuardAlarm == " +type );
+			//报警
+			if(type ==Alarm.HIGH||type==Alarm.LOW){
+				MyApplication.app.broadUtils.sendBleState(BroadcastUtils.BLE_ALARM_WARNING);	
+			}
+		}
+		
+		BlueGuard.State lastState ;  
+		@Override
 		public void blueGuardState(BlueGuard blueGuard, BlueGuard.State state) {
-			
+			MyApplication.logBug("blueGuardState == " +state );
+			if(state == BlueGuard.State.ARMED){
+				MyApplication.app.broadUtils.sendBleState(BroadcastUtils.BLE_ARMED);
+			}else if(state == BlueGuard.State.STOPPED){
+				if(isRunning()||lastState == BlueGuard.State.STARTED){
+					MyApplication.app.broadUtils.sendBleState(BroadcastUtils.BLE_STTOPED);
+				}
+				if(lastState == State.ARMED){
+					MyApplication.app.broadUtils.sendBleState(BroadcastUtils.BLE_DISARMED);
+				}
+			}else if(state == BlueGuard.State.STARTED){
+				MyApplication.app.broadUtils.sendBleState(BroadcastUtils.BLE_START);
+			}
+			lastState = state;
 		}
 		@Override
 		public void smartBikeUpdateData(SmartBike smartBike, byte[] data) {
@@ -339,14 +392,16 @@ public class BleInterface {
 			MyApplication.logBug("data="+sb.toString());
 			
 			if(data.length == 16){
+				//m
 				int mile = parserData.parserMileage(new byte[]{data[12],data[11],data[10],data[9]});
-				MyApplication.app.broadUtils.sendMileage(mile);
+				
+				MyApplication.app.broadUtils.sendMileage(mile/1000);
 				
 				if(currentMileage ==0){
 					currentMileage = mile;
 				}
 				if(mile-currentMileage>=0){
-					MyApplication.logBug("--increase mile ="+(mile-currentMileage)+" km");
+					MyApplication.logBug("--increase mile ="+(mile-currentMileage)+" m");
 					MyApplication.app.broadUtils.sendMileageDm(mile-currentMileage);
 				}
 				
@@ -373,11 +428,22 @@ public class BleInterface {
 		public void blueGuardPairResult(BlueGuard blueGuard, BlueGuard.PairResult result, String key) {
 			if(result == BlueGuard.PairResult.SUCCESS){
 				DeviceDB.Record rec = new DeviceDB.Record(blueGuard.name(), blueGuard.identifier(), key);
+				if(key == null){
+					key = "";
+				}
 				DeviceDB.save(mCtx, rec);
+				lastDevice = DeviceDB.load(mCtx);
 			}else{
-				mSmartBike.pair(Integer.decode("000000"));
+				DeviceDB.Record rec = new DeviceDB.Record(blueGuard.name(), blueGuard.identifier(), "");
+				DeviceDB.save(mCtx, rec);
+				lastDevice = DeviceDB.load(mCtx);
+//				mSmartBike.pair(Integer.decode("000000"));
 			}
 			
 		}
+	}
+	public SmartBike getSmartBike() {
+		// TODO Auto-generated method stub
+		return mSmartBike;
 	}
 }

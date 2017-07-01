@@ -11,6 +11,7 @@ import com.wang.android.mode.net.data.UserInfo;
 import com.wang.android.mode.utils.BroadcastUtils;
 import com.wang.android.mode.utils.DeviceNotes;
 import com.wang.android.mode.utils.SPUtils;
+import com.wang.android.mode.utils.ToastB;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -57,7 +58,7 @@ public class MyApplication extends FrameApplication {
 	
 	public void setSystemBar(Activity activity){
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-			setTranslucentStatus(activity,true);
+//			setTranslucentStatus(activity,true);
 			SystemBarTintManager tintManager = new SystemBarTintManager(activity);
 			tintManager.setStatusBarTintEnabled(true);
 			//tintManager.setStatusBarTintColor(activity.getResources().getColor(R.color.bg));//通知栏所需颜色
@@ -66,8 +67,7 @@ public class MyApplication extends FrameApplication {
 		}
 	}
 	
-	@TargetApi(19) 
-	public void setTranslucentStatus(Activity activity, boolean on) {
+	/*public void setTranslucentStatus(Activity activity, boolean on) {
 //		Window win = activity.getWindow();
 //		WindowManager.LayoutParams winParams = win.getAttributes();
 //		final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
@@ -77,7 +77,7 @@ public class MyApplication extends FrameApplication {
 //			winParams.flags &= ~bits;
 //		}
 //		win.setAttributes(winParams);
-		
+		try{
 	      if(VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP) {
 	      Window window = activity.getWindow();
 	      window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
@@ -89,7 +89,10 @@ public class MyApplication extends FrameApplication {
 	      window.setStatusBarColor(Color.TRANSPARENT);
 	     // window.setNavigationBarColor(Color.TRANSPARENT);
 	      }
-	}
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+	}*/
 	
 
 	public static void logBug(String msg) {
@@ -97,7 +100,7 @@ public class MyApplication extends FrameApplication {
 	}
 	
 	public void showToast(String str){
-		Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
+		ToastB.showToast(this, str);
 	}
 	
 	public UserInfo getLocalUserinfo(){
