@@ -74,10 +74,10 @@ public final class RegisteActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        code = ((AutoCompleteTextView) hasViews.findViewById(id.edt_register_code));
         password = ((AutoCompleteTextView) hasViews.findViewById(id.edt_register_pwd));
-        submit = ((Button) hasViews.findViewById(id.tv_register_submit));
         tvCode = ((TextView) hasViews.findViewById(id.tv_register_getCode));
+        submit = ((Button) hasViews.findViewById(id.tv_register_submit));
+        code = ((AutoCompleteTextView) hasViews.findViewById(id.edt_register_code));
         phone = ((AutoCompleteTextView) hasViews.findViewById(id.edt_register_phoneNumber));
         initViews();
     }

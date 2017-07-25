@@ -74,16 +74,16 @@ public final class CarCheckActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        scImg = ((ImageView) hasViews.findViewById(id.scImg));
-        scScaleImg = ((ImageView) hasViews.findViewById(id.scScaleImg));
-        djScaleImg = ((ImageView) hasViews.findViewById(id.djScaleImg));
-        djImg = ((ImageView) hasViews.findViewById(id.djImg));
-        zbScaleImg = ((ImageView) hasViews.findViewById(id.zbScaleImg));
-        zbImg = ((ImageView) hasViews.findViewById(id.zbImg));
-        allImg = ((ImageView) hasViews.findViewById(id.allImg));
         checkItemTv = ((TextView) hasViews.findViewById(id.checkItemTv));
-        allScaleImg = ((ImageView) hasViews.findViewById(id.allScaleImg));
+        zbImg = ((ImageView) hasViews.findViewById(id.zbImg));
+        scImg = ((ImageView) hasViews.findViewById(id.scImg));
         asrTv = ((TextView) hasViews.findViewById(id.asrTv));
+        djScaleImg = ((ImageView) hasViews.findViewById(id.djScaleImg));
+        allScaleImg = ((ImageView) hasViews.findViewById(id.allScaleImg));
+        allImg = ((ImageView) hasViews.findViewById(id.allImg));
+        zbScaleImg = ((ImageView) hasViews.findViewById(id.zbScaleImg));
+        djImg = ((ImageView) hasViews.findViewById(id.djImg));
+        scScaleImg = ((ImageView) hasViews.findViewById(id.scScaleImg));
         {
             View view = hasViews.findViewById(id.repertImg);
             if (view!= null) {

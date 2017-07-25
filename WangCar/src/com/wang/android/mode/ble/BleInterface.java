@@ -317,6 +317,12 @@ public class BleInterface {
 		@Override
 		public void blueGuardConnected(BlueGuard blueGuard) {
             mSmartBike.getAccountManager(); //
+            int isAutoArm = app.deviceNotes.enabledAutoGuard(false,0);
+			int armSilence = app.deviceNotes.enabledMuteGuard(false, 0);
+			app.ble.setAutoArmRangePercent(isAutoArm==1?true:false);
+			if(armSilence == 1){
+				app.ble.setClientArm();
+			}
             MyApplication.app.broadUtils.sendBleState(BroadcastUtils.BLE_CONNECTED);
             currentMileage=0;
 		}

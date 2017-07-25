@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wang.android"
-    android:versionCode="10"
-    android:versionName="2.1" >
+    android:versionCode="13"
+    android:versionName="2.3" >
 
     <uses-sdk
-        android:maxSdkVersion="19"
+        android:targetSdkVersion="19"
         android:minSdkVersion="18" />
 
     <!-- Required -->

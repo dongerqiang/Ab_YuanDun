@@ -76,7 +76,7 @@ public class MainActivity extends FragmentActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		BleInterface.getInstance().binder(getApplicationContext());
+		BleInterface.getInstance().binder(this);
 		
 		
 	}

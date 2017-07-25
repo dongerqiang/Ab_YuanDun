@@ -74,31 +74,16 @@ public final class SettingActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        findCb = ((CheckBox) hasViews.findViewById(id.findCb));
-        mutelockCb = ((CheckBox) hasViews.findViewById(id.mutelockCb));
-        jdsTv = ((TextView) hasViews.findViewById(id.jdsTv));
-        dangTv = ((TextView) hasViews.findViewById(id.dangTv));
-        lockCb = ((CheckBox) hasViews.findViewById(id.lockCb));
-        anzhuoCb = ((CheckBox) hasViews.findViewById(id.anzhuoCb));
-        volTv = ((TextView) hasViews.findViewById(id.volTv));
         autolockCb = ((CheckBox) hasViews.findViewById(id.autolockCb));
-        ljTv = ((TextView) hasViews.findViewById(id.ljTv));
+        volTv = ((TextView) hasViews.findViewById(id.volTv));
+        dangTv = ((TextView) hasViews.findViewById(id.dangTv));
         unlockCb = ((CheckBox) hasViews.findViewById(id.unlockCb));
-        {
-            View view = hasViews.findViewById(id.volLayout);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        SettingActivity_.this.volLayout();
-                    }
-
-                }
-                );
-            }
-        }
+        lockCb = ((CheckBox) hasViews.findViewById(id.lockCb));
+        ljTv = ((TextView) hasViews.findViewById(id.ljTv));
+        mutelockCb = ((CheckBox) hasViews.findViewById(id.mutelockCb));
+        findCb = ((CheckBox) hasViews.findViewById(id.findCb));
+        anzhuoCb = ((CheckBox) hasViews.findViewById(id.anzhuoCb));
+        jdsTv = ((TextView) hasViews.findViewById(id.jdsTv));
         {
             View view = hasViews.findViewById(id.ljLayout);
             if (view!= null) {
@@ -115,14 +100,14 @@ public final class SettingActivity_
             }
         }
         {
-            View view = hasViews.findViewById(id.speedLayout);
+            View view = hasViews.findViewById(id.volLayout);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
 
 
                     @Override
                     public void onClick(View view) {
-                        SettingActivity_.this.speedLayout();
+                        SettingActivity_.this.volLayout();
                     }
 
                 }
@@ -138,6 +123,21 @@ public final class SettingActivity_
                     @Override
                     public void onClick(View view) {
                         SettingActivity_.this.jdsLayout();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.speedLayout);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        SettingActivity_.this.speedLayout();
                     }
 
                 }

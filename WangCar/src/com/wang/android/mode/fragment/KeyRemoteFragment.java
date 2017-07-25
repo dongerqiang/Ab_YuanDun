@@ -163,12 +163,7 @@ public class KeyRemoteFragment extends BaseFragment {
 				if(state ==1){
 					app.showToast("已连接");
 					connect_flag.setVisibility(View.VISIBLE);
-					int isAutoArm = app.deviceNotes.enabledAutoGuard(false,0);
-					int armSilence = app.deviceNotes.enabledMuteGuard(false, 0);
-					app.ble.setAutoArmRangePercent(isAutoArm==1?true:false);
-					if(armSilence == 1){
-						app.ble.setClientArm();
-					}
+					
 				}else if(state == 0){
 					app.showToast("连接失败");
 					connect_flag.setVisibility(View.INVISIBLE);

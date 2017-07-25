@@ -197,6 +197,17 @@ public class YiBiaoFragment extends BaseFragment {
 				}
 				
 			}
+			
+			if(intent.getAction().equals(BroadcastUtils.BLE_CONNECT_STATE)){
+				int state = intent.getIntExtra(BroadcastUtils.KEY_BLE_STATE, 0);
+				if(state ==1){
+					app.showToast("已连接");
+					currentMileRunning =0;
+					currentSpeed = 0;
+				}else if(state == 0){
+					app.showToast("连接失败");
+				}
+			}
 		}
 		
 	}
