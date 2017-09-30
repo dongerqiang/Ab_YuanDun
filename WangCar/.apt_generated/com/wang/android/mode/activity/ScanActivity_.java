@@ -73,8 +73,8 @@ public final class ScanActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        hintTv = ((TextView) hasViews.findViewById(id.hintTv));
         listView = ((ListView) hasViews.findViewById(id.listView));
+        hintTv = ((TextView) hasViews.findViewById(id.hintTv));
         initViews();
     }
 

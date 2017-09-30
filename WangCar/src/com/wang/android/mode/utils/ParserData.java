@@ -51,13 +51,17 @@ public class ParserData {
 	
 	
 	public float parserElectricQuantity(byte[] data){
+		float percent = 0;
+		int realBattery = data[2] &0xff;
+		if(realBattery/100f<=0 ||realBattery/100f>1){
+		
 		int battery = data[0] & 0xff;
 		battery <<= 8;
 		battery |= data[1] & 0xff;
 		battery = battery /10+1;
 		int type = MyApplication.app.deviceNotes.opeMotorVol(false, 1);
 		MyApplication.logBug("battery == "+battery+"\ntype =="+type);
-		    float percent = 0;
+		    
 		       switch(type) {
 	           case 12:
 	               if (battery>=8&&battery<=20) {
@@ -105,8 +109,12 @@ public class ParserData {
 		        		percent=0;
 		        		break;
 		    }
-	       MyApplication.logBug("percent == "+percent);
-	       return percent;
+		   	
+		}else if(realBattery/100f<=1&&realBattery/100f>0){
+			percent=realBattery/100f;
+		}
+       MyApplication.logBug("percent == "+percent);
+       return percent;
 	}
 	
 	public String parserASR(byte asr){

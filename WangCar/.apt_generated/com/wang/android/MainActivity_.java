@@ -123,21 +123,6 @@ public final class MainActivity_
             }
         }
         {
-            View view = hasViews.findViewById(id.yibiaoImg);
-            if (view!= null) {
-                view.setOnClickListener(new OnClickListener() {
-
-
-                    @Override
-                    public void onClick(View view) {
-                        MainActivity_.this.yibiaoImg();
-                    }
-
-                }
-                );
-            }
-        }
-        {
             View view = hasViews.findViewById(id.serverImg);
             if (view!= null) {
                 view.setOnClickListener(new OnClickListener() {
@@ -146,6 +131,21 @@ public final class MainActivity_
                     @Override
                     public void onClick(View view) {
                         MainActivity_.this.serverImg();
+                    }
+
+                }
+                );
+            }
+        }
+        {
+            View view = hasViews.findViewById(id.yibiaoImg);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        MainActivity_.this.yibiaoImg();
                     }
 
                 }

@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.CursorLoader;
 import android.text.TextUtils;
+import android.widget.Toast;
 
 /***
  * 蓝牙接口通讯
@@ -297,6 +298,7 @@ public class BleInterface {
 			mSmartBike.delegate = new SmartBikeDelegate();
 			
 			if(lastDevice != null){
+				MyApplication.logBug("smartBikeManagerGotSmartBike === name-"+lastDevice.name+";identifier - "+lastDevice.identifier+"; key - "+lastDevice.key);
 				if(!TextUtils.isEmpty(lastDevice.key)){
 					mSmartBike.setConnectionKey(lastDevice.key);
 					mSmartBike.connect();
@@ -306,6 +308,8 @@ public class BleInterface {
 			}else{
 				mSmartBike.pair(Integer.decode("000000"));
 			}
+			
+			
 			
 		}
 		
@@ -335,19 +339,33 @@ public class BleInterface {
 				 if(lastDevice !=null){
 					 
 					 lastDevice.key = "";
-					 lastDevice.identifier="";
+//					 lastDevice.identifier="";
 					 DeviceDB.save(mCtx,lastDevice);
 					 lastDevice = DeviceDB.load(mCtx);					 
 				 }
+				 if(reason == BlueGuard.DisconnectReason.ERROR_PERMISSION){
+					 MyApplication.app.showToast("请重新连接!");
+//						Toast.makeText(app, "请手动打开配对模式", Toast.LENGTH_SHORT).show();
+				 }else if(reason == BlueGuard.DisconnectReason.ERROR_KEY){
+					 MyApplication.app.showToast("开启配对后连接！");
+//					 Toast.makeText(app, "error key", Toast.LENGTH_SHORT).show();
+				 }
 			 }else if(reason == BlueGuard.DisconnectReason.LINK_LOST){
-				 
+				 MyApplication.app.showToast("距离太远，失去连接！");
 				 if(lastDevice != null){
 						if(!TextUtils.isEmpty(lastDevice.key)){
 							mSmartBike.setConnectionKey(lastDevice.key);
 							mSmartBike.connect();
+						}else{
+							mSmartBike.pair(Integer.decode("000000"));
 						}
 				}
+			 }else{
+				 MyApplication.app.showToast("连接失败");
 			 }
+			 
+			 MyApplication.logBug("blueGuardDisconnected === name-"+lastDevice.name+";identifier - "+lastDevice.identifier+"; key - "+lastDevice.key);
+				
 		}
 
 		@Override
@@ -417,11 +435,11 @@ public class BleInterface {
 				signal = signal | 0xffffff00;
 				
 				MyApplication.app.asrStr = parserData.parserASR(data[13]);
-				
+			
 				int speed = parserData.parserSpeed(new byte[]{data[8],data[7],data[15],data[14]});
 				MyApplication.app.broadUtils.sendSpeed(speed);
 				
-				float vol = parserData.parserElectricQuantity(new byte[]{data[4],data[3]});
+				float vol = parserData.parserElectricQuantity(new byte[]{data[4],data[3],data[6]});
 				MyApplication.app.broadUtils.sendBattery(vol);
 				
 				MyApplication.logBug("--vol="+vol+"v");
@@ -432,6 +450,7 @@ public class BleInterface {
 		
 		@Override
 		public void blueGuardPairResult(BlueGuard blueGuard, BlueGuard.PairResult result, String key) {
+			MyApplication.logBug("blueGuardPairResult == result = "+result+"; key = "+key);
 			if(result == BlueGuard.PairResult.SUCCESS){
 				DeviceDB.Record rec = new DeviceDB.Record(blueGuard.name(), blueGuard.identifier(), key);
 				if(key == null){
@@ -439,12 +458,16 @@ public class BleInterface {
 				}
 				DeviceDB.save(mCtx, rec);
 				lastDevice = DeviceDB.load(mCtx);
+			}else if(result == BlueGuard.PairResult.ERROR_KEY){
+				lastDevice.key ="";
+				DeviceDB.save(mCtx, lastDevice);
 			}else{
 				DeviceDB.Record rec = new DeviceDB.Record(blueGuard.name(), blueGuard.identifier(), "");
 				DeviceDB.save(mCtx, rec);
 				lastDevice = DeviceDB.load(mCtx);
 //				mSmartBike.pair(Integer.decode("000000"));
 			}
+			MyApplication.logBug("blueGuardPairResult === name-"+lastDevice.name+";identifier - "+lastDevice.identifier+"; key - "+lastDevice.key);
 			
 		}
 	}

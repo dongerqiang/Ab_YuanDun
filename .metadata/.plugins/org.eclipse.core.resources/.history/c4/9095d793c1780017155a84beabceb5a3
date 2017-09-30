@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.wang.android"
+    android:versionCode="14"
+    android:versionName="2.4" >
+
+    <uses-sdk
+        android:targetSdkVersion="19"
+        android:minSdkVersion="18" />
+
+    <!-- Required -->
+    <permission
+        android:name="com.ananda.tailing.bike.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <!-- Required  一些系统要求的权限，如访问网络等 -->
+    <uses-permission android:name="com.ananda.tailing.bike.permission.JPUSH_MESSAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <!-- Optional for location -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- 用于开启 debug 版本的应用在6.0 系统上 层叠窗口权限 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
+    <!-- 网络权限设置 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 在SDCard中创建与删除文件权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!-- 往SDCard写入数据权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+
+    <!-- wifi权限设置 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+    <!-- 扫描权限 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <!-- Push service 运行需要的权限 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
+    <!-- for log. -->
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+
+    <!-- 地图包、搜索包需要的基础权限 -->
+
+
+    <!-- 定位包、导航包需要的额外权限（注：基础权限也需要） -->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+
+    <!-- 用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" >
+    </uses-permission>
+    <!-- 用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" >
+    </uses-permission>
+    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.READ_LOGS" /> <!-- 获取日志 -->
+
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="true" />
+
+    <!-- 设置蓝牙权限 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <application
+        android:name="com.wang.android.MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Black.NoTitleBar" >
+        <activity
+            android:name="com.wang.android.mode.activity.LoadingActivity_"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.wang.android.mode.activity.ScanActivity_"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.wang.android.mode.activity.SettingActivity_"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.wang.android.mode.activity.CarCheckActivity_"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.wang.android.mode.activity.CloudSmartControlActivity_"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".MainActivity_"
+            android:screenOrientation="portrait" >
+        </activity>
+        
+        <activity
+            android:name=".mode.activity.LoginActivity_"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTop" >
+        </activity>
+        <activity
+            android:name=".mode.activity.RegisteActivity_"
+            android:screenOrientation="portrait" >
+        </activity>
+        
+
+        <service
+            android:name="com.xiaofu_yan.blux.le.server.BluxSsService"
+            android:exported="true"
+            android:label="BluxGuard_Server" >
+            <intent-filter>
+                <action android:name="com.xiaofu_yan.blux.le.server.BluxSsService.ACTION" />
+            </intent-filter>
+        </service>
+        <service android:name="com.amap.api.location.APSService" >
+        </service>
+<!-- ff747ec7326813b36d0525ac86d8f74b -->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="f481a3aa992ddc307512f70c0570c295" >
+        </meta-data>
+    </application>
+
+</manifest>

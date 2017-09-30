@@ -76,13 +76,13 @@ public final class YiBiaoFragment_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
+        dangWei = ((TextView) hasViews.findViewById(com.wang.android.R.id.dangWei));
         speedPointImg = ((ImageView) hasViews.findViewById(com.wang.android.R.id.speedPointImg));
-        speedTv = ((TextView) hasViews.findViewById(com.wang.android.R.id.speedTv));
+        bateryFl = ((FrameLayout) hasViews.findViewById(com.wang.android.R.id.bateryFl));
         mileageIncreace = ((LinearLayout) hasViews.findViewById(com.wang.android.R.id.mileageIncreace));
         mileageLayout = ((LinearLayout) hasViews.findViewById(com.wang.android.R.id.mileageLayout));
         bateryProImg = ((ImageView) hasViews.findViewById(com.wang.android.R.id.bateryProImg));
-        bateryFl = ((FrameLayout) hasViews.findViewById(com.wang.android.R.id.bateryFl));
-        dangWei = ((TextView) hasViews.findViewById(com.wang.android.R.id.dangWei));
+        speedTv = ((TextView) hasViews.findViewById(com.wang.android.R.id.speedTv));
         if (dangWei!= null) {
             dangWei.setOnClickListener(new OnClickListener() {
 

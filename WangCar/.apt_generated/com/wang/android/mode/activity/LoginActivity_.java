@@ -74,8 +74,8 @@ public final class LoginActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        mEmailView = ((AutoCompleteTextView) hasViews.findViewById(id.email));
         mEmailSignInButton = ((Button) hasViews.findViewById(id.email_sign_in_button));
+        mEmailView = ((AutoCompleteTextView) hasViews.findViewById(id.email));
         register = ((TextView) hasViews.findViewById(id.register));
         mPasswordView = ((AutoCompleteTextView) hasViews.findViewById(id.password));
         initViews();
